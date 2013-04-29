@@ -1,0 +1,165 @@
+﻿<?xml version="1.0"?>
+<grammarConfig>
+    <!--Interval in Minutes when grammerUpdateType = continuous -->
+    <updateInterval>5</updateInterval>
+    <!-- Default shipped grammar, used as a direct replacement to SDC's legacy grammar builder-->
+    <grammar filename="directory.grxml">
+      <!--Update is continuous (uses <updateInterval> for period, or scheduled, which uses <timeOfDay>-->
+      <updateType>continuous</updateType>
+      <!--Only used if updateType is scheduled.  Time of day in 24-hour format-->
+      <timeOfDay>00:00</timeOfDay>
+      <!-- SQL query and any values for selecting grammar elements -->
+      <sqlQuery>
+        if(select count(*) as count from asralternatename where agm_dirtybit=1)>0
+        BEGIN
+            SELECT ASRAlternateName.ASR_AlternateName,ASRAlternateName.DirRefNum
+            FROM ASRAlternateName
+            INNER JOIN DIRECTORY ON ASRAlternateName.DirRefNum = DIRECTORY.REFNUM
+            WHERE (DIRECTORY.SS_Flag = 1) AND (DIRECTORY.SS_Enable = 1)
+            ORDER BY ASRAlternateName.ASR_AlternateName
+        END
+      </sqlQuery>
+      <useNaturalLanguage>true</useNaturalLanguage>
+    </grammar>
+    <!-- Advanced grammar compiler configuration, not to be used with the above default grammar-->
+    <!-- The grammar below should be used in conjuction with the updatedirectory to have a master and incremental grammar-->
+    <!-- For customer that have significantly larger directory sizes,where grammar loading caused a severe delay on call answer-->
+  
+    <!--grammar filename="directory.grxml"-->
+      <!--Update is continuous (uses <updateInterval> for period, or scheduled, which uses <timeOfDay>-->
+    <!--updateType>scheduled</updateType-->
+      <!--Only used if updateType is scheduled.  Time of day in 24-hour format-->
+    <!--timeOfDay>00:00</timeOfDay-->
+      <!-- SQL query and any values for selecting grammar elements -->
+      <!-- please note! all "<" less than characters in the query clause must be referrenced as "&lt;" due to xml standards-->
+    <!--sqlQuery>
+        SELECT ASRAlternateName.ASR_AlternateName,ASRAlternateName.DirRefNum
+        FROM ASRAlternateName
+        INNER JOIN DIRECTORY ON ASRAlternateName.DirRefNum = DIRECTORY.REFNUM
+        WHERE (DIRECTORY.SS_Flag = 1) AND (DIRECTORY.SS_Enable = 1)
+        ORDER BY ASRAlternateName.ASR_AlternateName
+      </sqlQuery-->
+    <!--useNaturalLanguage>true</useNaturalLanguage-->
+    <!--/grammar-->
+  
+    <!-- Advanced incremental grammar compiler configuration, the following TSQL transaction will return the current days worth of 
+    newly entered names(alternate names). This TSQL command also returns duplicate names that are required for disambiguation, use this
+    in conjuction with advanced grammar above, and comment out the default grammar-->
+    
+    <!--grammar filename="updatedirectory.grxml"-->
+        <!--Update is continuous (uses <updateInterval> for period, or scheduled, which uses <timeOfDay>-->
+    <!--updateType>continuous</updateType-->
+        <!--Only used if updateType is scheduled.  Time of day in 24-hour format-->
+    <!--timeOfDay>00:00</timeOfDay-->
+        <!-- SQL query and any values for selecting grammar elements -->
+        <!-- please note! all "<" less than characters in the query clause must be referrenced as "&lt;" due to xml standards-->
+    <!--sqlQuery-->
+    <!--if(select count(*) as count from asralternatename where agm_dirtybit=1)>0
+              BEGIN
+                DECLARE @returnTable TABLE (
+                ASR_AlternateName varchar(150),
+                DirRefNum bigint
+                )
+                DECLARE @ASR_AlternateName varchar(150)
+                DECLARE @Dirrefnum bigint
+                
+                declare persons cursor for
+                  SELECT ASRAlternateName.ASR_AlternateName,ASRAlternateName.DirRefNum
+                  FROM ASRAlternateName
+                  INNER JOIN DIRECTORY ON ASRAlternateName.DirRefNum = DIRECTORY.REFNUM
+                  WHERE (DIRECTORY.SS_Flag = 1) AND (DIRECTORY.SS_Enable = 1) and(CASLOC='') and
+                  ASRAlternateName.date_entered >= CAST(CONVERT(VARCHAR(10), GETDATE(), 101) AS DATETIME) AND
+                  ASRAlternateName.date_entered &lt;= CAST(CONVERT(VARCHAR(10), GETDATE(), 101) + ' 23:59:59' AS DATETIME)
+                  ORDER BY ASRAlternateName.ASR_AlternateName
+                open persons
+                fetch next from persons into @ASR_AlternateName,@Dirrefnum
+                  while @@fetch_status = 0
+                    begin
+                    DECLARE @SubASR_AlternateName varchar(150)
+                    DECLARE @SubDirrefnum bigint
+                    declare alternates cursor for
+                      SELECT ASRAlternateName.ASR_AlternateName,ASRAlternateName.DirRefNum
+                      FROM ASRAlternateName
+                      INNER JOIN DIRECTORY ON ASRAlternateName.DirRefNum = DIRECTORY.REFNUM
+                      WHERE (DIRECTORY.SS_Flag = 1) AND (DIRECTORY.SS_Enable = 1) AND ASRAlternateName.ASR_AlternateName=@ASR_AlternateName
+                        open alternates
+                          fetch next from alternates into @SubASR_AlternateName,@SubDirrefnum
+                            while @@fetch_status = 0
+                            Begin
+                              insert into @returnTable (ASR_AlternateName,dirrefnum) 	VALUES(@SubASR_AlternateName,@SubDirrefnum)
+                              fetch next from alternates into @SubASR_AlternateName,@SubDirrefnum
+                            End
+                        close alternates
+                        deallocate alternates
+                  fetch next from persons into @ASR_AlternateName,@Dirrefnum
+                end
+          close persons
+          deallocate persons
+              select * from @returnTable order by asr_alternateName
+          END
+          -->
+        <!--/sqlQuery-->
+    <!--useNaturalLanguage>true</useNaturalLanguage-->
+    <!--/grammar-->
+    
+    <sql>
+      <!-- SQL update (and any values) to signify grammar has been created -->
+      <sqlUpdate>
+        UPDATE    ASRAlternateName
+        SET       AGM_DirtyBit = 0
+        WHERE     (AGM_DirtyBit IN
+        (SELECT ASRAlternateName.AGM_DirtyBit
+        FROM ASRAlternateName OUTTER JOIN
+        DIRECTORY ON ASRAlternateName.DirRefNum = DIRECTORY.REFNUM
+        WHERE (Directory.ss_flag = 1) AND (Directory.ss_enable = 1) AND (AGM_DirtyBit = 1)))
+      </sqlUpdate>
+
+      <!-- SQL check if any elements have changed (AGM_DirtyBit query) -->
+      <sqlIsUpdatedQuery>
+        SELECT ASRAlternateName.AGM_DirtyBit
+        FROM ASRAlternateName
+        INNER JOIN DIRECTORY ON ASRAlternateName.DirRefNum = DIRECTORY.REFNUM
+        WHERE (DIRECTORY.SS_Flag = 1) AND (DIRECTORY.SS_Enable = 1) AND (AGM_DirtyBit = 1)
+      </sqlIsUpdatedQuery>
+    </sql>
+
+    <!-- This is the directory where the generated grammars are placed. -->
+    <grammarPath>D:\amcom\IntelliSPEECH\IS_Grammars</grammarPath>
+
+    <!-- URL root of grammars for http prefetch (need slash at end)-->
+    <grammarUrl>http://127.0.0.1:8080/IS_Grammars/</grammarUrl>
+
+    <!-- Pre/post word settings -->
+    <naturalLanguage>
+      <pre>
+        <item>mister</item>
+        <item>Mrs.</item>
+        <item>miss</item>
+        <item>the</item>
+        <item>may I speak to</item>
+        <item>get me the</item>
+        <item>I need the</item>
+        <item>I would like</item>
+        <item>Connect me to</item>
+        <item>may I please speak to</item>
+        <item>can I please speak to</item>
+        <item>can I speak to</item>
+      </pre>
+      <post>
+        <item>office</item>
+        <item>department</item>
+        <item>division</item>
+        <item>please</item>
+        <item>thanks</item>
+        <item>thank you</item>
+      </post>
+    </naturalLanguage>
+
+    <grammarCompiler>
+      <path>D:\Program Files\Nuance\Recognizer\bin\sgc.exe</path>
+      <commandLineOptions>-optimize 5</commandLineOptions>
+    </grammarCompiler>
+
+    <!-- debugging? -->
+    <debug>false</debug>
+</grammarConfig>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--SDCSolutions.IntelliSpeech.Service Application Configuration-->
+<configuration>
+  <!--File Version-->
+  <version>1.0.0</version>
+  <serviceMonitor>
+    <!--SDC Web-based Control Server for this service-->
+    <primaryServer>dev-jontest</primaryServer>
+    <secondaryServer></secondaryServer>
+    <port>8889</port>
+  </serviceMonitor>
+  <!--SDC General Database Configuration Uses Integrated Security Only-->
+  <!--For programmatic acces to this configuration, use App.ConnectionString()-->
+  <database>
+    <!--Source  Format: ServerName or ServerName\InstanceName-->
+    <dataSource>SDCS04</dataSource>
+    <!--Database Name-->
+    <initialCatalog>SDCIntelliDESK6</initialCatalog>
+  </database>
+  <!--These sections provide more flexible database connectivity-->
+  <!--You can specifiy security mode as well as username and password -->
+  <!--For programmatic acces to this configuration, use App.ConnectionString("application")-->
+  <databaseConnections>
+    <database application="desk">
+      <dbName>SDCINTELLIDESK6</dbName>
+      <serverName>SDCS04</serverName>
+      <serverPort>1433</serverPort>
+      <integratedSecurity>false</integratedSecurity>
+      <userName>SDC</userName>
+      <password>thinksdc</password>
+    </database>
+    <database application="speech">
+      <dbName>INTELLISPEECH</dbName>
+      <serverName>SDCS04</serverName>
+      <serverPort>1433</serverPort>
+      <integratedSecurity>false</integratedSecurity>
+      <userName>SDC</userName>
+      <password>thinksdc</password>
+    </database>
+  </databaseConnections>
+  <modules>
+    <!--The modules section is used to configure specific modules within an application or service-->
+    <sdcEmergencyNotificationSystem>
+      <webServiceURL>http://asr-is-test2:8082/outbound_dialer/OutboundDialerService?wsdl</webServiceURL>
+      <defaultVXMLApplicationServer>http://10.0.3.31:8080</defaultVXMLApplicationServer>
+      <pagedDaysAgoFailover>7</pagedDaysAgoFailover>
+      <sdcOutboundServiceTypes>
+        <service>
+          <!--corresponds to the TRNTYP in IntelliDesk INTTRAN table-->
+          <dbTransactionType>ECALLOUT</dbTransactionType>
+          <priority>3</priority>
+        </service>
+        <service>
+          <!--corresponds to the TRNTYP in IntelliDesk INTTRAN table-->
+          <dbTransactionType>EmergRcd</dbTransactionType>
+          <priority>2</priority>
+        </service>
+      </sdcOutboundServiceTypes>
+    </sdcEmergencyNotificationSystem>
+    <sdcSpeechReporting>
+      <enabled>false</enabled>
+    </sdcSpeechReporting>
+  </modules>
+  <diagnostics>
+    <!--
+            These are the diagnostic trace levels available 
+            0 - Disabled
+            1 - Gives error messages
+            2 - Gives errors and warnings
+            3 - Gives more detailed error information
+            4 - Gives verbose trace information
+        -->
+    <tracelevel>4</tracelevel>
+  </diagnostics>
+</configuration>

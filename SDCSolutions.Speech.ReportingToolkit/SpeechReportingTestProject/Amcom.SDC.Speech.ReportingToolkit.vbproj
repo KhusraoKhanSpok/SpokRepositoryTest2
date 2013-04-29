@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{80B01A2E-6F40-484D-92F8-F770A8D028DF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>SpeechReportingToolKit.My.MyApplication</StartupObject>
+    <RootNamespace>SpeechReportingToolKit</RootNamespace>
+    <AssemblyName>SpeechReportingToolkit</AssemblyName>
+    <MyType>WindowsForms</MyType>
+    <ApplicationIcon>wrench.ico</ApplicationIcon>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>http://localhost/SpeechReportingToolkit/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>SpeechReportingToolkit.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>SpeechReportingToolkit.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AlphaGradientPanel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.4.369, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddNewSiteDialog.Designer.vb">
+      <DependentUpon>AddNewSiteDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AddNewSiteDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeDBDialog.Designer.vb">
+      <DependentUpon>ChangeDBDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeDBDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigTester.vb" />
+    <Compile Include="ConfigViewer.Designer.vb">
+      <DependentUpon>ConfigViewer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigViewer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorViewer.Designer.vb">
+      <DependentUpon>ErrorViewer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorViewer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForceReports.Designer.vb">
+      <DependentUpon>ForceReports.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ForceReports.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fullContext.Designer.vb">
+      <DependentUpon>fullContext.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fullContext.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MailReportForm.Designer.vb">
+      <DependentUpon>MailReportForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MailReportForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpeechReportma.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpeechReportma.Designer.vb">
+      <DependentUpon>SpeechReportma.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ReportReviewer.Designer.vb">
+      <DependentUpon>ReportReviewer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ReportReviewer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Startup.Designer.vb">
+      <DependentUpon>Startup.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Startup.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AddNewSiteDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AddNewSiteDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeDBDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ChangeDBDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigViewer.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ConfigViewer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorViewer.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ErrorViewer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ForceReports.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ForceReports.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fullContext.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>fullContext.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MailReportForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MailReportForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpeechReportma.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SpeechReportma.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportReviewer.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ReportReviewer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Startup.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Startup.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gear_run.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gears_run.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SDClogo.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SDClogoTransparent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unknown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wrench.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gear_find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ReportToolKitSplash.png" />
+    <None Include="Resources\mail.png" />
+    <None Include="Resources\mail_add.png" />
+    <None Include="Resources\mail_delete.png" />
+    <None Include="Resources\mail_out.png" />
+    <None Include="Resources\gears_view.png" />
+    <None Include="Resources\delete2.png" />
+    <None Include="Resources\gear_warning.png" />
+    <None Include="Resources\data_copy.png" />
+    <None Include="Resources\SpeechDbContext.png" />
+    <None Include="Resources\DeskDbContext.png" />
+    <None Include="Resources\SMTPcontext.png" />
+    <None Include="Resources\FlagsContext.png" />
+    <None Include="Resources\Data Flow Diagram.jpg" />
+    <None Include="Resources\information.png" />
+    <None Include="Resources\gear_add.png" />
+    <Content Include="AlphaGradientPanel.dll" />
+    <None Include="Resources\amcom-logo-small.jpg" />
+    <Content Include="Resources\AmcomLogo.jpg" />
+    <Content Include="Resources\amcomTransparent.bmp" />
+    <Content Include="App.xml" />
+    <Content Include="ICSharpCode.SharpZipLib.dll" />
+    <None Include="Resources\ISpech-amcomLogo.jpg" />
+    <Content Include="Resources\ReportingServicesToolkit.png" />
+    <Content Include="wrench.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Amcom.SDC.BaseServices\Amcom.SDC.BaseServices.vbproj">
+      <Project>{4A94F9DD-BC92-495D-9928-FC93B5B28410}</Project>
+      <Name>Amcom.SDC.BaseServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Amcom.SDC.BaseServices\Utilities\Amcom.SDC.CodeUtilities.csproj">
+      <Project>{DB173085-8CC4-4C49-8AA4-328442ABC887}</Project>
+      <Name>Amcom.SDC.CodeUtilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SDCSolutions.Speech.ReportBuilder\Amcom.SDC.Speech.ReportBuilder.vbproj">
+      <Project>{84867D97-E973-433F-849F-EA6305058237}</Project>
+      <Name>Amcom.SDC.Speech.ReportBuilder</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

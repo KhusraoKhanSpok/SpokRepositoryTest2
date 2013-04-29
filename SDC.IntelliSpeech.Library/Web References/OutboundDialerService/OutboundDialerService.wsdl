@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="http://server.outdial.smm.sandcherry.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="OutboundDialerService" targetNamespace="http://server.outdial.smm.sandcherry.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://asr-is-test2:8082/outbound_dialer/OutboundDialerService?xsd=1" namespace="http://server.outdial.smm.sandcherry.com/" />
+    </xsd:schema>
+  </types>
+  <message name="addOutboundCall">
+    <part name="parameters" element="tns:addOutboundCall" />
+  </message>
+  <message name="addOutboundCallResponse">
+    <part name="parameters" element="tns:addOutboundCallResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
+  <message name="cancelPendingOutboundCall">
+    <part name="parameters" element="tns:cancelPendingOutboundCall" />
+  </message>
+  <message name="cancelPendingOutboundCallResponse">
+    <part name="parameters" element="tns:cancelPendingOutboundCallResponse" />
+  </message>
+  <message name="getDefaultRetryIntervalMinutes">
+    <part name="parameters" element="tns:getDefaultRetryIntervalMinutes" />
+  </message>
+  <message name="getDefaultRetryIntervalMinutesResponse">
+    <part name="parameters" element="tns:getDefaultRetryIntervalMinutesResponse" />
+  </message>
+  <message name="cancelRetryOutboundCall">
+    <part name="parameters" element="tns:cancelRetryOutboundCall" />
+  </message>
+  <message name="cancelRetryOutboundCallResponse">
+    <part name="parameters" element="tns:cancelRetryOutboundCallResponse" />
+  </message>
+  <message name="getDefaultBrowserURI">
+    <part name="parameters" element="tns:getDefaultBrowserURI" />
+  </message>
+  <message name="getDefaultBrowserURIResponse">
+    <part name="parameters" element="tns:getDefaultBrowserURIResponse" />
+  </message>
+  <message name="addOutboundCallWithRetryInterval">
+    <part name="parameters" element="tns:addOutboundCallWithRetryInterval" />
+  </message>
+  <message name="addOutboundCallWithRetryIntervalResponse">
+    <part name="parameters" element="tns:addOutboundCallWithRetryIntervalResponse" />
+  </message>
+  <message name="addOutboundCallWithPriority">
+    <part name="parameters" element="tns:addOutboundCallWithPriority" />
+  </message>
+  <message name="addOutboundCallWithPriorityResponse">
+    <part name="parameters" element="tns:addOutboundCallWithPriorityResponse" />
+  </message>
+  <message name="changePriorityByForeignKey">
+    <part name="parameters" element="tns:changePriorityByForeignKey" />
+  </message>
+  <message name="changePriorityByForeignKeyResponse">
+    <part name="parameters" element="tns:changePriorityByForeignKeyResponse" />
+  </message>
+  <message name="addOutboundCallWithForeignKey">
+    <part name="parameters" element="tns:addOutboundCallWithForeignKey" />
+  </message>
+  <message name="addOutboundCallWithForeignKeyResponse">
+    <part name="parameters" element="tns:addOutboundCallWithForeignKeyResponse" />
+  </message>
+  <message name="cancelOutboundCallByForeignKey">
+    <part name="parameters" element="tns:cancelOutboundCallByForeignKey" />
+  </message>
+  <message name="cancelOutboundCallByForeignKeyResponse">
+    <part name="parameters" element="tns:cancelOutboundCallByForeignKeyResponse" />
+  </message>
+  <message name="getOutboundCallList">
+    <part name="parameters" element="tns:getOutboundCallList" />
+  </message>
+  <message name="getOutboundCallListResponse">
+    <part name="parameters" element="tns:getOutboundCallListResponse" />
+  </message>
+  <message name="tester">
+    <part name="parameters" element="tns:tester" />
+  </message>
+  <message name="testerResponse">
+    <part name="parameters" element="tns:testerResponse" />
+  </message>
+  <portType name="OutboundDialer">
+    <operation name="addOutboundCall">
+      <input message="tns:addOutboundCall" />
+      <output message="tns:addOutboundCallResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="cancelPendingOutboundCall">
+      <input message="tns:cancelPendingOutboundCall" />
+      <output message="tns:cancelPendingOutboundCallResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getDefaultRetryIntervalMinutes">
+      <input message="tns:getDefaultRetryIntervalMinutes" />
+      <output message="tns:getDefaultRetryIntervalMinutesResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="cancelRetryOutboundCall">
+      <input message="tns:cancelRetryOutboundCall" />
+      <output message="tns:cancelRetryOutboundCallResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getDefaultBrowserURI">
+      <input message="tns:getDefaultBrowserURI" />
+      <output message="tns:getDefaultBrowserURIResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="addOutboundCallWithRetryInterval">
+      <input message="tns:addOutboundCallWithRetryInterval" />
+      <output message="tns:addOutboundCallWithRetryIntervalResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="addOutboundCallWithPriority">
+      <input message="tns:addOutboundCallWithPriority" />
+      <output message="tns:addOutboundCallWithPriorityResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="changePriorityByForeignKey">
+      <input message="tns:changePriorityByForeignKey" />
+      <output message="tns:changePriorityByForeignKeyResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="addOutboundCallWithForeignKey">
+      <input message="tns:addOutboundCallWithForeignKey" />
+      <output message="tns:addOutboundCallWithForeignKeyResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="cancelOutboundCallByForeignKey">
+      <input message="tns:cancelOutboundCallByForeignKey" />
+      <output message="tns:cancelOutboundCallByForeignKeyResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getOutboundCallList">
+      <input message="tns:getOutboundCallList" />
+      <output message="tns:getOutboundCallListResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="tester">
+      <input message="tns:tester" />
+      <output message="tns:testerResponse" />
+    </operation>
+  </portType>
+  <binding name="OutboundDialerPortBinding" type="tns:OutboundDialer">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="addOutboundCall">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="cancelPendingOutboundCall">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getDefaultRetryIntervalMinutes">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="cancelRetryOutboundCall">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getDefaultBrowserURI">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="addOutboundCallWithRetryInterval">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="addOutboundCallWithPriority">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="changePriorityByForeignKey">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="addOutboundCallWithForeignKey">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="cancelOutboundCallByForeignKey">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getOutboundCallList">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="tester">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="OutboundDialerService">
+    <port name="OutboundDialerPort" binding="tns:OutboundDialerPortBinding">
+      <soap:address location="http://asr-is-test2:8082/outbound_dialer/OutboundDialerService" />
+    </port>
+  </service>
+</definitions>

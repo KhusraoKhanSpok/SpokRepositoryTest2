@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://server.outdial.smm.sandcherry.com/" targetNamespace="http://server.outdial.smm.sandcherry.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Exception" type="tns:Exception" />
+  <xs:element name="addOutboundCall" type="tns:addOutboundCall" />
+  <xs:element name="addOutboundCallResponse" type="tns:addOutboundCallResponse" />
+  <xs:element name="addOutboundCallWithForeignKey" type="tns:addOutboundCallWithForeignKey" />
+  <xs:element name="addOutboundCallWithForeignKeyResponse" type="tns:addOutboundCallWithForeignKeyResponse" />
+  <xs:element name="addOutboundCallWithPriority" type="tns:addOutboundCallWithPriority" />
+  <xs:element name="addOutboundCallWithPriorityResponse" type="tns:addOutboundCallWithPriorityResponse" />
+  <xs:element name="addOutboundCallWithRetryInterval" type="tns:addOutboundCallWithRetryInterval" />
+  <xs:element name="addOutboundCallWithRetryIntervalResponse" type="tns:addOutboundCallWithRetryIntervalResponse" />
+  <xs:element name="cancelOutboundCallByForeignKey" type="tns:cancelOutboundCallByForeignKey" />
+  <xs:element name="cancelOutboundCallByForeignKeyResponse" type="tns:cancelOutboundCallByForeignKeyResponse" />
+  <xs:element name="cancelPendingOutboundCall" type="tns:cancelPendingOutboundCall" />
+  <xs:element name="cancelPendingOutboundCallResponse" type="tns:cancelPendingOutboundCallResponse" />
+  <xs:element name="cancelRetryOutboundCall" type="tns:cancelRetryOutboundCall" />
+  <xs:element name="cancelRetryOutboundCallResponse" type="tns:cancelRetryOutboundCallResponse" />
+  <xs:element name="changePriorityByForeignKey" type="tns:changePriorityByForeignKey" />
+  <xs:element name="changePriorityByForeignKeyResponse" type="tns:changePriorityByForeignKeyResponse" />
+  <xs:element name="getDefaultBrowserURI" type="tns:getDefaultBrowserURI" />
+  <xs:element name="getDefaultBrowserURIResponse" type="tns:getDefaultBrowserURIResponse" />
+  <xs:element name="getDefaultRetryIntervalMinutes" type="tns:getDefaultRetryIntervalMinutes" />
+  <xs:element name="getDefaultRetryIntervalMinutesResponse" type="tns:getDefaultRetryIntervalMinutesResponse" />
+  <xs:element name="getOutboundCallList" type="tns:getOutboundCallList" />
+  <xs:element name="getOutboundCallListResponse" type="tns:getOutboundCallListResponse" />
+  <xs:element name="tester" type="tns:tester" />
+  <xs:element name="testerResponse" type="tns:testerResponse" />
+  <xs:complexType name="tester">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="testerResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="addOutboundCallWithPriority">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string" />
+      <xs:element minOccurs="0" name="arg1" type="xs:string" />
+      <xs:element minOccurs="0" name="arg2" type="xs:string" />
+      <xs:element name="arg3" type="xs:int" />
+      <xs:element name="arg4" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addOutboundCallWithPriorityResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Exception">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cancelRetryOutboundCall">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cancelRetryOutboundCallResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getOutboundCallList">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getOutboundCallListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addOutboundCall">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string" />
+      <xs:element minOccurs="0" name="arg1" type="xs:string" />
+      <xs:element minOccurs="0" name="arg2" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addOutboundCallResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addOutboundCallWithForeignKey">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string" />
+      <xs:element minOccurs="0" name="arg1" type="xs:string" />
+      <xs:element minOccurs="0" name="arg2" type="xs:string" />
+      <xs:element name="arg3" type="xs:int" />
+      <xs:element name="arg4" type="xs:int" />
+      <xs:element minOccurs="0" name="arg5" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addOutboundCallWithForeignKeyResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cancelOutboundCallByForeignKey">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cancelOutboundCallByForeignKeyResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cancelPendingOutboundCall">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cancelPendingOutboundCallResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="changePriorityByForeignKey">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string" />
+      <xs:element name="arg1" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="changePriorityByForeignKeyResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addOutboundCallWithRetryInterval">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string" />
+      <xs:element minOccurs="0" name="arg1" type="xs:string" />
+      <xs:element minOccurs="0" name="arg2" type="xs:string" />
+      <xs:element name="arg3" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addOutboundCallWithRetryIntervalResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getDefaultBrowserURI">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getDefaultBrowserURIResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getDefaultRetryIntervalMinutes">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getDefaultRetryIntervalMinutesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

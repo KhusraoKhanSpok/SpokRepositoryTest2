@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--SDCSolutions.IntelliSpeech.Service Application Configuration-->
+<configuration>
+  <!--File Version-->
+  <version>1.0.1</version>
+  <serviceMonitor>
+    <!--SDC Web-based Control Server for this service-->
+    <primaryServer>127.0.0.1</primaryServer>
+    <secondaryServer></secondaryServer>
+    <port>8889</port>
+  </serviceMonitor>
+  <!--SDC General Database Configuration Uses Integrated Security Only-->
+  <!--For programmatic acces to this configuration, use App.ConnectionString()-->
+  <database>
+    <!--Source  Format: ServerName or ServerName\InstanceName-->
+    <dataSource>127.0.0.1</dataSource>
+    <!--Database Name-->
+    <initialCatalog>SDCIntelliDESK6</initialCatalog>
+  </database>
+  <!--These sections provide more flexible database connectivity-->
+  <!--You can specifiy security mode as well as username and password -->
+  <!--For programmatic acces to this configuration, use App.ConnectionString("application")-->
+  <databaseConnections>
+    <database application="desk">
+      <dbName>SDCINTELLIDESK6</dbName>
+      <!-- serverName use serverName\instanceName for a particular instance -->
+      <serverName>127.0.0.1</serverName>
+      <integratedSecurity>false</integratedSecurity>
+      <userName>SDC</userName>
+      <password>thinksdc</password>
+    </database>
+    <database application="speech">
+      <dbName>INTELLISPEECH</dbName>
+      <!-- serverName use serverName\instanceName for a particular instance -->
+      <serverName>127.0.0.1</serverName>
+      <integratedSecurity>false</integratedSecurity>
+      <userName>SDC</userName>
+      <password>thinksdc</password>
+    </database>
+  </databaseConnections>
+  <modules>
+    <!--The modules section is used to configure specific modules within an application or service-->
+    <sdcEmergencyNotificationSystem>
+      <webServiceURL>http://127.0.0.1:8082/outbound_dialer/OutboundDialerService?wsdl</webServiceURL>
+      <defaultVXMLApplicationServer>http://127.0.0.1:8080</defaultVXMLApplicationServer>
+      <sdcOutboundServiceTypes>
+        <service>
+          <!--corresponds to the TRNTYP in IntelliDesk INTTRAN table-->
+          <dbTransactionType>ECALLOUT</dbTransactionType>
+          <priority>3</priority>
+        </service>
+        <service>
+          <!--corresponds to the TRNTYP in IntelliDesk INTTRAN table-->
+          <dbTransactionType>EmergRcd</dbTransactionType>
+          <priority>2</priority>
+        </service>
+      </sdcOutboundServiceTypes>
+    </sdcEmergencyNotificationSystem>
+    <sdcSpeechOutdialer>
+      <enabled>false</enabled>
+    </sdcSpeechOutdialer>
+    <sdcSpeechReporting>
+      <enabled>true</enabled>
+    </sdcSpeechReporting>
+    <sdcGrammarCompiler>
+      <enabled>true</enabled>
+    </sdcGrammarCompiler>
+  </modules>
+  <diagnostics>
+    <!--    all Tracelog Values (Microsoft standards)
+            0 - Disabled
+            1 - Gives error messages
+            2 - Gives errors and warnings
+            3 - Gives more detailed error information
+            4 - Gives verbose trace information
+        -->
+    <!-- backward compatibility, obsolete-->
+    <tracelevel>4</tracelevel>
+    <console>
+      <!-- Console messages will be seperate from logging Messages-->
+      <!-- All console messages will be pain text format -->
+      <tracelevel>4</tracelevel>
+      <!-- Wrap the message text if will not fit on one line. 0 disables -->
+      <maxWidth>120</maxWidth>
+    </console>
+    <logfile>
+      <!-- Valid formats are: legacy, flatfile and xml-->
+      <!-- legacy is the current SDC BaseServices format for backward compatibility-->
+      <!-- flatfile is the new format according to circulated specification document-->
+      <!-- xml is the new xml specification according to circulated specfication document-->
+      <traceFormat>legacy</traceFormat>
+      <traceLevel>4</traceLevel>
+    </logfile>
+    <syslog>
+      <!-- if enabled and address set, will send log file information to syslog daemon-->
+      <enabled>false</enabled>
+      <ipOrDnsName>localhost</ipOrDnsName>
+    </syslog>
+  </diagnostics>
+</configuration>
