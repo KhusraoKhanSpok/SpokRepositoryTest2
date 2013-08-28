@@ -31,7 +31,7 @@ Public Class ReportConfigReader
     Dim channelReport As String 'Flag to trigger if we make a calls per channel report. 
     Dim dayToReport As Integer 'The day of the week to generate the reports. 
     Dim hourToReport As Integer 'The hour of the day to generate the reports.
-    Dim policeFile As String 'The location of the "police file" for a customer site. 
+    'Dim policeFile As String 'The location of the "police file" for a customer site. 
 
     'Email Variables
     Dim smtpServer As String 'The smtp server used to send e-mail. 
@@ -57,12 +57,12 @@ Public Class ReportConfigReader
             Return dbSpeechServer
         End Get
     End Property
-    Public ReadOnly Property policeFileLocation() As String
-        Get
-            Load() 'Loads the config if not already. 
-            Return policeFile
-        End Get
-    End Property
+    'Public ReadOnly Property policeFileLocation() As String
+    '    Get
+    '        Load() 'Loads the config if not already. 
+    '        Return policeFile
+    '    End Get
+    'End Property
     Public ReadOnly Property databaseSpeechPort() As String
         Get
             Load() 'Loads the config if not already. 
@@ -463,7 +463,7 @@ Public Class ReportConfigReader
 
             'Find the police file from the configs.
             ' -MS 3/10/2008 - hiding this in a static location with a static name. 
-            policeFile = My.Computer.FileSystem.SpecialDirectories.Temp & "\ReportDebugLog.txt"
+            'policeFile = My.Computer.FileSystem.SpecialDirectories.Temp & "\ReportDebugLog.txt"
 
             currentSite = customer 'Assign the currently selected site to the indicated customer.
 

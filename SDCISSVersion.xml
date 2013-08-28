@@ -1,0 +1,129 @@
+<xml>
+<release>
+<version>1.0.1.16</version>
+<item>
+    <type>E</type>
+    <problem>Rebrand with Amcom logos</problem>
+    <resolution>rebranded by replacing all SDC logos with Amcom</resolution>
+</item>
+<item>
+    <type>E</type>
+    <problem>Change installation path to default to D:\Program Files\</problem>
+    <resolution>Defaulted install directory to D:\Program Files\Amcom Software\..etc</resolution>
+</item>
+<item>
+    <type>E</type>
+    <problem>Reporting updates</problem>
+    <resolution>1.Changed report pegging to mark hangups as completed calls.
+    2.Rebranded logos with Amcom logos
+    3.New version uses the (install directory) \Report Files\ directory to store needed rdlc files for reporting
+    4.Reports now have the version of reporting on every page along with an explanation of line items.
+    </resolution>
+</item>
+<item>
+    <type>E</type>
+    <problem>Grammar updates</problem>
+    <resolution>1. Grammar builder now uses grammarConfig.xml as its configuration file. 
+    2. Grammar builder now supports continuous and scheduled grammar builds
+    3. grammarConfig.xml now ships with better performing queries when selecting data for building a grammar
+    (see grammarConfig.xml for inline comments/directions on setting up scheduled grammars. note: The installed service
+    will continue to build grammars just like previous versions with continuous builds if left unchanged.
+    </resolution>
+</item>
+<item>
+    <type>E</type>
+    <problem>Added versioning to SDCISS service</problem>
+    <resolution>Since this typicall runs as a service, at the top of every log file or at the beginning of a service start
+    the service will log Amcom.SDC.IntelliSpeech.Service 1.0.1.16 indicating the version that is running </resolution>
+</item>
+</release>
+<release>
+<version>1.0.1.18</version>
+<item>
+    <type>B</type>
+    <problem>SDCISS installer does not generate the proper report files folder for reporting</problem>
+    <resolution>Modified installer to create "Report Files" folder and add in report .rdlc files</resolution>
+</item>
+</release>
+<release>
+<version>1.0.1.19</version>
+<item>
+    <type>B</type>
+    <problem>When running SDCISS as a service, the service sporadically does not stop properly</problem>
+    <resolution>Found issue in Speech reporting module which was producing an exception. Corrected issue</resolution>
+</item>
+<item>
+    <type>E/B</type>
+    <problem>Outbound dialer component was expiring page transactions prematurely</problem>
+    <resolution>Found issue to be related to lack of database connectivity when obtaining the threshold period to use for expiring transactions, in condition where the service 
+    cannot access the database to obtain the proper configuration value, as a default this value will not be obtained from the app.xml as a back, if the app.xml does not have the
+    parameter set, the default of 7 days will be used.</resolution>
+</item>
+</release>
+<release>
+<version>1.0.1.24</version>
+<item>
+    <type>E</type>
+    <problem>Add Command Usage reporting on Transfer Report</problem>
+    <resolution>Added</resolution>
+</item>
+<item>
+    <type>E</type>
+    <problem>Update reports with latest Amcom branding</problem>
+    <resolution>Completed</resolution>
+</item>
+<item>
+    <type>B</type>
+    <problem>Date range periods produce inaccurate reports</problem>
+    <resolution>Found several issues with the rendering of specific date ranges which was causing major total call inaccuracies. New reporting now use the correct time span
+    to cover the appropriate weekly date range period  I.e StartDateTime Date X @ 00:00 hours to EndDateTime Date X @ 23:59</resolution>
+</item>
+<item>
+    <type>B</type>
+    <problem>Increased the Preferred name column size in the transfer report</problem>
+    <resolution>Completed</resolution>
+</item>
+<item>
+    <type>E</type>
+    <problem>Added additional Transaction Report call detaul line items</problem>
+    <resolution>Added disambiguation failures, No Input on Confirmation Request</resolution>
+</item>
+</release>
+<release>
+<version>1.0.1.25</version>
+<item>
+    <type>E</type>
+    <problem>Rally DE7595 Unable to run service on a 64 bit OS</problem>
+    <resolution>Resolved by removing accessive dateTime UTC logging which did not serve a purpose</resolution>
+</item>
+<item>
+    <type>B</type>
+    <problem>Rally DE7596 Speech Reporting total number of names enabled is not accurate</problem>
+    <resolution>Fixed the query logic used to determine the total count but filtering out directory names that are not enabled for speech</resolution>
+</item>
+</release>
+<release>
+<version>1.0.1.26</version>
+<item>
+    <type>B</type>
+    <problem>Rally DE7742 Reporting- Force Reports option not producing the same report totals as report viewer\automated reports</problem>
+    <resolution>Resolved issue by handling the dateTime formatting properly</resolution>
+</item>
+</release>
+<release>
+<version>1.0.1.27</version>
+<item>
+    <type>B</type>
+    <problem>Rally DE7596 Reporting- Total count of enabled names is enaccurate</problem>
+    <resolution>The query used to about the totals was only using the directory.SS_Enable flag, added directory.ss_flag to the query logic</resolution>
+</item>
+</release>
+<release>
+<version>1.0.1.28</version>
+<item>
+    <type>B</type>
+    <problem>Rally US26846 Reporting- Removing TEMP Folder and special MyDocuments folder dependencies</problem>
+    <resolution>Removed all referrences to Temp or MyDocuments special folders, replaces referrences with the RenderedReportLocation path which is configurable and used for all reporting file output</resolution>
+</item>
+</release>
+</xml>

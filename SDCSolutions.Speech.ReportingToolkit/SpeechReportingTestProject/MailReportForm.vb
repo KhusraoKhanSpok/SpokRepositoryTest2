@@ -46,7 +46,7 @@ Public Class MailReportForm
             '    Dim reportAttatch As New Net.Mail.Attachment(report)
             '    email.Attachments.Add(reportAttatch)
             'Next
-            email.Attachments.Add(zipFiles(Me.attatchmentList.Items))
+            email.Attachments.Add(zipFiles(Me.attatchmentList.Items, configs.renderedLocation))
 
             'Setup our sender and credentials!
             Dim emailSender As New System.Net.Mail.SmtpClient(configs.mailServer, configs.mailPort)
@@ -72,15 +72,17 @@ Public Class MailReportForm
         End Try
     End Sub
 
-    Function zipFiles(ByVal reports As ListBox.ObjectCollection) As System.Net.Mail.Attachment
+    Function zipFiles(ByVal reports As ListBox.ObjectCollection, ByVal TempReportDirectory As String) As System.Net.Mail.Attachment
         'Zips up the report files and returns the file path of were the zip resides. 
         Dim fileLoc As String = ""
 
         'Set the zip file name.
-        fileLoc = My.Computer.FileSystem.SpecialDirectories.Desktop & "\" & configs.selectedSite & "." & Now.Day & "." & Now.Month & "." & Now.Year & ".zip"
+
+
+        fileLoc = TempReportDirectory & "\" & configs.selectedSite & "." & Now.Day & "." & Now.Month & "." & Now.Year & ".zip"
 
         'Set the name for the temporary directory we will be zipping up. 
-        Dim tempReportDir As String = My.Computer.FileSystem.SpecialDirectories.Desktop & "\" & configs.selectedSite & "_Reports"
+        Dim tempReportDir As String = TempReportDirectory & "\" & configs.selectedSite & "_Reports"
 
         'Create the temporary directory
         FileIO.FileSystem.CreateDirectory(tempReportDir)

@@ -136,6 +136,12 @@
         "Entry"
         {
         "MsmKey" = "8:_4E7E461CD30DE7B27DDB62B25E39A26F"
+        "OwnerKey" = "8:_7443A15056FC4E8792A77038AEB7C22D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4E7E461CD30DE7B27DDB62B25E39A26F"
         "OwnerKey" = "8:_D6B79EDFFCF38A7CE92D8D9319D1F538"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -149,12 +155,6 @@
         {
         "MsmKey" = "8:_4E7E461CD30DE7B27DDB62B25E39A26F"
         "OwnerKey" = "8:_9C2A85A4E46F4148AE4E184ED7D8D711"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_4E7E461CD30DE7B27DDB62B25E39A26F"
-        "OwnerKey" = "8:_7443A15056FC4E8792A77038AEB7C22D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -238,6 +238,12 @@
         "Entry"
         {
         "MsmKey" = "8:_D6B79EDFFCF38A7CE92D8D9319D1F538"
+        "OwnerKey" = "8:_7443A15056FC4E8792A77038AEB7C22D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D6B79EDFFCF38A7CE92D8D9319D1F538"
         "OwnerKey" = "8:_BC40BC62548A82E3A0ABC856FBCD2CE4"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -257,12 +263,6 @@
         {
         "MsmKey" = "8:_D6B79EDFFCF38A7CE92D8D9319D1F538"
         "OwnerKey" = "8:_9C2A85A4E46F4148AE4E184ED7D8D711"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D6B79EDFFCF38A7CE92D8D9319D1F538"
-        "OwnerKey" = "8:_7443A15056FC4E8792A77038AEB7C22D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -328,6 +328,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_D6B79EDFFCF38A7CE92D8D9319D1F538"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_56F70B1A3FB34841AD7E9BE30F4CF091"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -358,19 +364,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_BC40BC62548A82E3A0ABC856FBCD2CE4"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D6B79EDFFCF38A7CE92D8D9319D1F538"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_4E7E461CD30DE7B27DDB62B25E39A26F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_BC40BC62548A82E3A0ABC856FBCD2CE4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -697,11 +697,11 @@
                 {
                     "_3A1CD07F4FDC8943A67C7ED2FB70062E"
                     {
-                    "Name" = "8:ICSharpCode.SharpZipLib.DLL"
+                    "Name" = "8:ICSharpCode.SharpZipLib.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:ICSharpCode.SharpZipLib.DLL"
+            "SourcePath" = "8:ICSharpCode.SharpZipLib.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_BE105EFC94F848EE9D773266E72D4E31"
@@ -896,7 +896,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Amcom.SDC.Speech.ReportBuilder, Version=1.0.5.26, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Amcom.SDC.Speech.ReportBuilder, Version=1.0.1.28, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_56F70B1A3FB34841AD7E9BE30F4CF091"
@@ -978,7 +978,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Amcom.SDC.Speech.ReportBuilder, Version=1.0.5.26, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Amcom.SDC.Speech.ReportBuilder, Version=1.0.1.28, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_BC40BC62548A82E3A0ABC856FBCD2CE4"
@@ -1091,7 +1091,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Amcom.SDC.IntelliSpeech.Library, Version=1.0.1.26, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Amcom.SDC.IntelliSpeech.Library, Version=1.0.1.28, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_F209293CA1F2B510AA9B9565DDE62F66"
@@ -1244,14 +1244,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Amcom.SDC IntelliSpeech Service"
-        "ProductCode" = "8:{F3BB8067-4497-4B49-A68E-ED250C1644BF}"
-        "PackageCode" = "8:{3C67F36F-0EAE-4FA6-995A-B2856E64D040}"
+        "ProductCode" = "8:{747A8EF0-6DD0-47F6-83F3-2C458BDD4569}"
+        "PackageCode" = "8:{007C3916-65D0-4043-9F57-76E6D97C71AC}"
         "UpgradeCode" = "8:{0392C403-6F3A-45DB-B2D4-BC321E9B57B1}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.27"
+        "ProductVersion" = "8:1.0.28"
         "Manufacturer" = "8:Amcom Software"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://www.amcomsoftware.com"

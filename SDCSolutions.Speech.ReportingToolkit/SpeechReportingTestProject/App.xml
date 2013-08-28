@@ -13,7 +13,7 @@
   <!--For programmatic acces to this configuration, use App.ConnectionString()-->
   <database>
     <!--Source  Format: ServerName or ServerName\InstanceName-->
-    <dataSource>sdcs04</dataSource>
+    <dataSource>10.11.10.122</dataSource>
     <!--Database Name-->
     <initialCatalog>SDCIntelliDESK6</initialCatalog>
   </database>
@@ -22,8 +22,8 @@
   <!--For programmatic acces to this configuration, use App.ConnectionString("application")-->
   <databaseConnections>
     <database application="desk">
-      <dbName>sdcintellidesk6</dbName>
-      <serverName>sdcs04</serverName>
+      <dbName>sdcintellidesk7</dbName>
+      <serverName>10.11.10.122</serverName>
       <serverPort>1433</serverPort>
       <integratedSecurity>false</integratedSecurity>
       <userName>SDC</userName>
@@ -31,7 +31,7 @@
     </database>
     <database application="speech">
       <dbName>INTELLISPEECH</dbName>
-      <serverName>sdcs04</serverName>
+      <serverName>10.11.10.122</serverName>
       <serverPort>1433</serverPort>
       <integratedSecurity>false</integratedSecurity>
       <userName>SDC</userName>

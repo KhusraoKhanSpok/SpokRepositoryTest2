@@ -241,7 +241,7 @@ Public Class ReportGenerator
                 GenerateTransfer()
             End If
             If channel Then GenerateChReport()
-            'If email Then emailer.SendMail(configs)
+            If email Then emailer.SendMail(configs)
 
         Catch ex As OleDb.OleDbException
             MsgBox("There was an error attempting to connect to a database:" & vbCrLf & ex.Message, MsgBoxStyle.Critical, "Database Error!")
@@ -507,11 +507,11 @@ Public Class ReportGenerator
 
 
         'If police Then
-        Dim policer As New CallLogPolicer
+        'Dim policer As New CallLogPolicer
 
-        callLogTable = policer.PoliceCalls(callLogTable)
+        'callLogTable = policer.PoliceCalls(callLogTable)
 
-        callLogTable.WriteXml(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\CallLog.xml")
+        'callLogTable.WriteXml(My.Computer.FileSystem.SpecialDirectories.MyDocuments & "\CallLog.xml")
 
         'End If
 
