@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+	<!--
+	*********************************************
+	Variables Section
+  
+	Add Variables to use in the Wix Project. This
+	can be any string and can be used to replace
+	any string
+	*********************************************
+	-->
+	<?define UpgradeCode="0392C403-6F3A-45DB-B2D4-BC321E9B57B1"?>
+	<?ifdef env.MAJOR_VERSION?>
+	<?define major="$(env.MAJOR_VERSION)"?>
+	<?else?>
+	<?define major="1"?>
+	<?endif?>
+
+	<?ifdef env.MINOR_VERSION?>
+	<?define minor="$(env.MINOR_VERSION)"?>
+	<?else?>
+	<?define minor="0"?>
+	<?endif?>
+
+	<?ifdef env.REVISON?>
+	<?define revision="$(env.REVISION)"?>
+	<?else?>
+	<?define revision="0"?>
+	<?endif?>
+
+	<?ifdef env.BUILD_NUMBER?>
+	<?define buildnumber="$(env.BUILD_NUMBER)"?>
+	<?else?>
+	<?define buildnumber="1"?>
+	<?endif?>
+</Include>

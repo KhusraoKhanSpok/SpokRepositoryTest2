@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension"
+  xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+	
+	<?include Variables.wxi?>
+
+	<Product Id="*"
+	   Name="Spok Intellispeech Service"
+	   Language="1033" Version="$(var.major).$(var.minor).$(var.buildnumber)"
+	   Manufacturer="Spok, Inc."
+	   UpgradeCode="{0392C403-6F3A-45DB-B2D4-BC321E9B57B1}">
+
+		<Package
+  InstallerVersion="200"
+  Compressed="yes"
+  Languages="1033"
+  Comments="This installer database contains the logic and data required to install Spok Intellispeech Service $(var.major).$(var.minor).$(var.buildnumber)"
+  InstallScope="perMachine"/>
+  <InstallExecuteSequence>
+    <!--<MajorUpgrade
+      Schedule="afterInstallValidate"
+      DowngradeErrorMessage="A later version of [ProductName] is already installed. Setup will now exit."/>-->
+	<RemoveExistingProducts After='InstallValidate' />
+</InstallExecuteSequence>  
+		<Upgrade Id="$(var.UpgradeCode)">
+			<UpgradeVersion Minimum="1.0.0"
+							IncludeMinimum="yes"
+							OnlyDetect="no"
+							Maximum="$(var.major).$(var.minor).$(var.buildnumber)"
+							IncludeMaximum="no"
+							Property="PREVIOUSFOUND" />
+		</Upgrade>
+		<PropertyRef Id="NETFRAMEWORK40FULL"/>
+		<Condition Message="This application requires .NET Framework 3.5. Please install the .NET Framework then run this installer again.">
+			<![CDATA[Installed OR NETFRAMEWORK40FULL]]>
+		</Condition>
+		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLLOCATION" />
+		<Property Id="MYWIXUI_SQLSERVER" Value="SDCSQL" />
+		<Property Id="MYWIXUI_SQLDATABASE" Value="SDCIntelliDesk7" />
+		<!--Property Id="MYWIXUI_PAGERGROUPNUM" Value="1" /-->
+
+		<UIRef Id="MyWixUI_InstallDir" />
+		<UIRef Id="WixUI_ErrorProgressText" />
+
+		<WixVariable Id="WixUIBannerBmp" Value="graphics/installer.banner.bmp" />
+		<WixVariable Id="WixUIDialogBmp" Value="graphics/installer.leftPanel.bmp" />
+		<Icon Id="CompanyIcon" SourceFile="graphics/installer.logo.ico"/>
+		<Property Id="ARPPRODUCTICON" Value="CompanyIcon" />
+
+		<UI>
+			<Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg">1</Publish>
+			<Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2">1</Publish>
+		</UI>
+		<Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
+
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="SpokIntelliSpeechService" Name="Amcom Software">
+					<Directory Id="INSTALLLOCATION" Name="IntelliDesk Speech Service">
+						<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+						<!-- <Component Id="ProductComponent" Guid="354508a0-9eda-4f8c-a5ef-fa11b7a637c7"> -->
+						<!-- TODO: Insert files, registry keys, and other resources here. -->
+						<!-- </Component> -->
+						<!--Archive-->
+						<!--Includes all archive types included in the project-->
+						<!--Service-->
+						<Component Id="cmpSpeechService" Guid="{E96674CC-9DA6-4533-BFDB-3CF9EEE94627}">
+							<File Id="filSpeechService" Source="$(var.Amcom.SDC.IntelliSpeech.Service.TargetDir)Amcom.SDC.IntelliSpeech.Service.exe" />
+							<ServiceInstall
+										   Id="ServiceInstaller"
+										   Type="ownProcess"
+										   Vital="yes"
+										   Name="SpokIntelliSpeechService"
+										   DisplayName="Spok IntelliSpeech Service"
+										   Description="Speech Service for IntelliSpeech"
+										   Start="auto"
+										   Account="LocalSystem"
+										   ErrorControl="ignore"
+										   Interactive="no"
+              >
+
+								<util:ServiceConfig
+									xmlns="http://schemas.microsoft.com/wix/UtilExtension"
+									RestartServiceDelayInSeconds="5"
+									FirstFailureActionType="restart"
+									SecondFailureActionType="restart"
+									ThirdFailureActionType="none"/>
+							</ServiceInstall>
+							<ServiceControl Id="StopIntelliSpeechService" Name="SpokIntelliSpeechService" Stop="both" Wait="yes" Remove="uninstall" />
+						</Component>
+						<!--Console-->
+						<Component Id="cmpSpeechConsole" Guid="{89BE1980-008E-4B94-8AE6-6C8189B703E2}">
+							<File Id="filSpeechConsole" Source="$(var.Amcom.SDC.IntelliSpeech.Console.TargetDir)\Amcom.SDC.IntelliSpeech.Console.exe" />
+						</Component>
+            
+            <!--SpeechLibrary-->
+            <Component Id="cmpSpeechLibrary" Guid="{7C03462F-2420-4D7F-84EB-337C0D5B5C8B}">
+              <File Id="filSpeechLibrary" Source="$(var.Amcom.SDC.IntelliSpeech.Library.TargetDir)\Amcom.SDC.IntelliSpeech.Library.Dll" />
+            </Component>
+
+            <!--ReportBuilder-->
+            <Component Id="cmpReportBuilder" Guid="{87113986-7EB0-4CDA-BEB0-5C9634E3B39C}">
+              <File Id="filReportBuilder" Source="$(var.Amcom.SDC.Speech.ReportBuilder.TargetDir)\Amcom.SDC.Speech.ReportBuilder.Dll" />
+            </Component>
+
+            <!--Zip Library-->
+            <Component Id="cmpZipLib" Guid="{364EF2FE-8D6A-4AF6-ADD7-CE2E3533C570}">
+              <File Id="filZipLib" Source="$(var.Amcom.SDC.Speech.ReportBuilder.TargetDir)\ICSharpCode.SharpZipLib.Dll" />
+            </Component>
+
+            <!--Json Library-->
+            <Component Id="cmpJsonLib" Guid="{F48E5496-67F9-48E4-8547-FB4354E5B894}">
+              <File Id="filJasonLib" Source="$(var.Amcom.SDC.IntelliSpeech.Library.TargetDir)\Newtonsoft.Json.Dll" />
+            </Component>
+            
+            <!--Base Services-->
+            <Component Id="cmpBaseService" Guid="{16D1AC42-ACC2-437F-8191-DEB6CABF87EA}">
+							<File Id="filBaseService" Source="$(var.Amcom.SDC.IntelliSpeech.Service.TargetDir)\Amcom.SDC.BaseServices.dll" />
+						</Component>
+
+            <!--CodeUtilities-->
+						<Component Id="cmpCodeUtilities" Guid="{157943F7-334E-4D67-A91B-646D4C50B684}">
+							<File Id="filCodeUtilities" Source="$(var.Amcom.SDC.IntelliSpeech.Service.TargetDir)\Amcom.SDC.CodeUtilities.dll" />
+						</Component>
+
+            <!--Grammar File-->
+            <Component Id="cmpgrammar" Guid="{AE1785A2-4CA0-4F3F-9E03-C10E3A023229}">
+              <File Id="filGrammar" Source="grammarConfig.xml" />
+            </Component>
+
+            <!--Transaction Report-->
+            <Component Id="cmpTransaction_Report" Guid="{A5FA3EED-FA22-408E-93D7-8015082FCFFE}">
+              <File Id="filTransaction_Report" Source="Transaction_Report.rdlc" />
+            </Component>
+
+            <!--Transfer Report-->
+            <Component Id="cmpTransfer_Report" Guid="{980B8961-FE71-4453-8FB0-9E842B7C63F1}">
+              <File Id="filTransfer_Report" Source="TransferReport.rdlc" />
+            </Component>
+
+            <!--Registry Key for Amcom.SDC.IntelliSpeech.Service-->
+						<Component Id="IntelliSpeechRegistryService" Guid="{18267773-517F-4606-9636-B171063FF6BC}">
+							<RegistryKey Root="HKLM" Key="SOFTWARE\Amcom Software\Amcom.SDC.IntelliSpeech.Service" />
+							<RegistryValue Root="HKLM" Key="SOFTWARE\Amcom Software\Amcom.SDC.IntelliSpeech.Service" Type="string" Name="RootPath" Value="[INSTALLLOCATION]" KeyPath="yes" />
+						</Component>
+						<!--Registry Key for Amcom.SDC.IntelliSpeech.Console-->
+						<Component Id="IntellispeechRegistryConsole" Guid="{3C3C6FFA-C02C-4703-BF9C-D9AA707FDEFB}">
+							<RegistryKey Root="HKLM" Key="SOFTWARE\Amcom Software\Amcom Software\Amcom.SDC.IntelliSpeech.Console" />
+							<RegistryValue Root="HKLM" Key="SOFTWARE\Amcom Software\Amcom Software\Amcom.SDC.IntelliSpeech.Console" Type="string" Name="RootPath" Value="[INSTALLLOCATION]" KeyPath="yes" />
+						</Component>
+						<!--Folders and files-->
+						<Directory Id="Config" Name="Config">
+							<Component Id="App.xml" Guid="{90F03804-0B94-48A1-8958-9E916626EF65}">
+								<File Id="App.xml" Source="$(var.Amcom.SDC.IntelliSpeech.Console.TargetDir)..\..\App.xml" />
+							</Component>
+						</Directory>
+						<Directory Id="Exceptions" Name="Exceptions">
+							<Component Id="ExceptionsEmptyFolder" Guid="{6A9DA690-A34F-468E-AFE0-B4A7E1F5E3E3}">
+								<CreateFolder />
+							</Component>
+						</Directory>
+						<Directory Id="Files" Name="Files">
+							<Component Id="FilesEmptyFolder" Guid="{C2C172A5-906D-49D2-AEBF-AE558DDD39D3}">
+								<CreateFolder />
+							</Component>
+						</Directory>
+						<Directory Id="Logs" Name="Logs">
+							<Component Id="LogsEmptyFolder" Guid="{4A9CD5EC-CB30-4893-B5C7-75413370D05F}">
+								<CreateFolder />
+							</Component>
+						</Directory>
+
+					</Directory>
+				</Directory>
+			</Directory>
+		</Directory>
+
+		<Feature Id="ProductFeature" Title="Spok IntelliSpeech Service" Level="1">
+			<!-- TODO: Remove the comments around this ComponentRef element and the Component above in order to add resources to this installer. -->
+			<!-- <ComponentRef Id="ProductComponent" /> -->
+
+			<!--Archive Service-->
+			<ComponentRef Id="cmpSpeechService" />
+
+			<!--Console-->
+			<ComponentRef Id="cmpSpeechConsole" />
+
+      <!--SpeechLibrary-->
+      <ComponentRef Id="cmpSpeechLibrary" />
+
+      <!--CodeUtil-->
+			<ComponentRef Id="cmpCodeUtilities" />
+
+      <!--ReportBuilder-->
+      <ComponentRef Id="cmpReportBuilder" />
+
+      <!--Zip Library-->
+      <ComponentRef Id="cmpZipLib" />
+
+      <!--Json Library-->
+      <ComponentRef Id="cmpJsonLib" />
+      
+      <!--BaseService-->
+			<ComponentRef Id="cmpBaseService" />
+
+      <!--Grammar File-->
+      <ComponentRef Id="cmpgrammar" />
+
+      <!--Transaction Report-->
+      <ComponentRef Id="cmpTransaction_Report"/>
+
+      <!--Transfer Report-->
+      <ComponentRef Id="cmpTransfer_Report"/>
+      
+			<!--registry-->
+			<ComponentRef Id="IntelliSpeechRegistryService"/>
+			<ComponentRef Id="IntellispeechRegistryConsole"/>
+
+			<!--folders-->
+			<ComponentRef Id="App.xml"/>
+			<ComponentRef Id="ExceptionsEmptyFolder"/>
+			<ComponentRef Id="FilesEmptyFolder"/>
+			<ComponentRef Id="LogsEmptyFolder"/>
+
+		</Feature>
+	</Product>
+</Wix>
