@@ -11,10 +11,10 @@ For %%A in (%filename%) do (
   Set Name=%%~nxA
 )
 
-if not exist "%Folder%"  Goto Error2
+if not exist "%Folder%"  Goto Error1
 if not exist "%Folder%" set  Folder = "D:\Program Files\Amcom Software\Amcom.SDC IntelliSpeech Service\Report Files"
-if not exist "%Folder%\Report Files" Goto ERROR3
-if not exist "*.rdlc" Goto ERROR4
+if not exist "%Folder%\Report Files" Goto ERROR2
+if not exist "*.rdlc" Goto ERROR3
 
 xcopy "*.rdlc" "%Folder%\Report Files" /Y
 if ERRORLEVEL 0 Goto :Sucess 
