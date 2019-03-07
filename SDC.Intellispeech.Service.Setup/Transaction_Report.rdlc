@@ -697,7 +697,7 @@ WHERE     ASR_Call_Log.Call_Date &gt;= (cast(convert(varchar(8),getdate() - 7,1)
                       </Style>
                       <ZIndex>3</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>Amcom Speech Ports:</Value>
+                      <Value>Spok Speech Ports:</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -715,7 +715,7 @@ WHERE     ASR_Call_Log.Call_Date &gt;= (cast(convert(varchar(8),getdate() - 7,1)
                       </Style>
                       <ZIndex>2</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>Total number of licensed Amcom Speech ports.</Value>
+                      <Value>Total number of licensed Spok Speech ports.</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -3012,7 +3012,7 @@ WHERE     ASR_Call_Log.Call_Date &gt;= (cast(convert(varchar(8),getdate() - 7,1)
                       </Style>
                       <ZIndex>1</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>Amcom Speech Ports:</Value>
+                      <Value>Spok Speech Ports:</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
