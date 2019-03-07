@@ -1251,7 +1251,7 @@
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.28"
+        "ProductVersion" = "8:1.0.29"
         "Manufacturer" = "8:Amcom Software"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://www.amcomsoftware.com"
